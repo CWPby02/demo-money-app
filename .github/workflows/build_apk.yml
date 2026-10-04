@@ -1,0 +1,47 @@
+name: Build Demo Money APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # 1. GitHub repository का code लेना
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      # 2. Flutter environment setup करना
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.0'
+          channel: stable
+          cache: true
+
+
+      # 3. Missing Flutter project files generate करना
+      #    इससे android/, pubspec.yaml आदि बनेंगे।
+      - name: Create Flutter project
+        run: flutter create --platforms=android .
+
+
+      # 4. Dependencies install करना
+      - name: Install dependencies
+        run: flutter pub get
+
+
+      # 5. Release APK बनाना
+      - name: Build APK
+        run: flutter build apk --release
+
+
+      # 6. APK को GitHub Actions में save करना
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-money-app-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
