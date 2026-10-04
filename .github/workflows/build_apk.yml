@@ -26,8 +26,7 @@ jobs:
       # 3. Missing Flutter project files generate करना
       #    इससे android/, pubspec.yaml आदि बनेंगे।
       - name: Create Flutter project
-        run: flutter create --platforms=android .
-
+        run: flutter create --project-name demo_money_app --platforms=android .
 
       # 4. Dependencies install करना
       - name: Install dependencies
