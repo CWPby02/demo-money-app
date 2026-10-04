@@ -15,11 +15,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      // --------------------------------------------------
-      // APP BAR
-      // --------------------------------------------------
-
       appBar: AppBar(
         title: const Text(
           'Demo Money',
@@ -31,26 +26,29 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.notifications_outlined),
+
+            icon: const Icon(
+              Icons.notifications_outlined,
+            ),
           ),
 
           IconButton(
             onPressed: () {
               Navigator.push(
                 context,
+
                 MaterialPageRoute(
                   builder: (_) => const ProfileScreen(),
                 ),
               );
             },
-            icon: const Icon(Icons.person_outline),
+
+            icon: const Icon(
+              Icons.person_outline,
+            ),
           ),
         ],
       ),
-
-      // --------------------------------------------------
-      // BODY
-      // --------------------------------------------------
 
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -59,15 +57,13 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-
-            // Balance
             const BalanceCard(),
 
             const SizedBox(height: 24),
 
-            // Quick Actions
             const Text(
               'Quick Actions',
+
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -78,7 +74,6 @@ class HomeScreen extends StatelessWidget {
 
             Row(
               children: [
-
                 Expanded(
                   child: ActionButton(
                     icon: Icons.qr_code_scanner,
@@ -87,8 +82,10 @@ class HomeScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
+
                         MaterialPageRoute(
-                          builder: (_) => const ScannerScreen(),
+                          builder: (_) =>
+                              const ScannerScreen(),
                         ),
                       );
                     },
@@ -105,8 +102,10 @@ class HomeScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
+
                         MaterialPageRoute(
-                          builder: (_) => const PaymentScreen(),
+                          builder: (_) =>
+                              const PaymentScreen(),
                         ),
                       );
                     },
@@ -119,7 +118,6 @@ class HomeScreen extends StatelessWidget {
 
             Row(
               children: [
-
                 Expanded(
                   child: ActionButton(
                     icon: Icons.history,
@@ -128,6 +126,7 @@ class HomeScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
+
                         MaterialPageRoute(
                           builder: (_) =>
                               const TransactionsScreen(),
@@ -152,14 +151,14 @@ class HomeScreen extends StatelessWidget {
 
             const SizedBox(height: 28),
 
-            // Recent Transactions
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
 
               children: [
-
                 const Text(
                   'Recent Transactions',
+
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -170,6 +169,7 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
+
                       MaterialPageRoute(
                         builder: (_) =>
                             const TransactionsScreen(),
@@ -205,15 +205,10 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
 
-      // --------------------------------------------------
-      // BOTTOM NAVIGATION
-      // --------------------------------------------------
-
       bottomNavigationBar: NavigationBar(
         selectedIndex: 0,
 
         destinations: const [
-
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
@@ -240,6 +235,7 @@ class HomeScreen extends StatelessWidget {
           if (index == 1) {
             Navigator.push(
               context,
+
               MaterialPageRoute(
                 builder: (_) => const ScannerScreen(),
               ),
@@ -249,6 +245,7 @@ class HomeScreen extends StatelessWidget {
           if (index == 2) {
             Navigator.push(
               context,
+
               MaterialPageRoute(
                 builder: (_) =>
                     const TransactionsScreen(),
@@ -259,6 +256,7 @@ class HomeScreen extends StatelessWidget {
           if (index == 3) {
             Navigator.push(
               context,
+
               MaterialPageRoute(
                 builder: (_) => const ProfileScreen(),
               ),
